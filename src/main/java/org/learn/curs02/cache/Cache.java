@@ -1,2 +1,11 @@
-package org.learn.curs02.cach;public @interface Cache {
+package org.learn.curs02.cache;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface Cache {
 }
