@@ -16,6 +16,20 @@ public class CacheTest implements ICacheTest {
   }
 
   @Override
+  @Cache
+  public int cachedMethod(int i) {
+    cachedCount++;
+    return i;
+  }
+
+  @Override
+  @Cache
+  public double cachedMethod(double d) {
+    cachedCount++;
+    return d;
+  }
+
+  @Override
   @Mutator
   public void mutatorMethod() {
   }

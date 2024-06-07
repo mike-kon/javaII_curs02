@@ -20,6 +20,36 @@ public class AppTest {
     cacheTest.cachedMethod();
     assertEquals(1,ct.getCachedCount());
   }
+
+  @Test
+  public void runCachIntTest() {
+    final int i = 10;
+    CacheTest ct = new CacheTest();
+    ICacheTest cacheTest = Util.cache(ct);
+    assertEquals(0,ct.getCachedCount());
+    int ii = cacheTest.cachedMethod(i);
+    assertEquals(i, ii);
+    assertEquals(1,ct.getCachedCount());
+    ii = cacheTest.cachedMethod(i);
+    assertEquals(i, ii);
+    assertEquals(1,ct.getCachedCount());
+  }
+
+  @Test
+  public void runCachDoubleTest() {
+    final double d = 12.25;
+    CacheTest ct = new CacheTest();
+    ICacheTest cacheTest = Util.cache(ct);
+    assertEquals(0,ct.getCachedCount());
+    double dd = cacheTest.cachedMethod(d);
+    assertEquals(d, dd);
+    assertEquals(1,ct.getCachedCount());
+    dd = cacheTest.cachedMethod(d);
+    assertEquals(d, dd);
+    assertEquals(1,ct.getCachedCount());
+  }
+
+
   @Test
   public void runMutatorTest() {
     CacheTest ct = new CacheTest();
