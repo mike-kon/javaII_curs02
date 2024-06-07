@@ -9,7 +9,7 @@ public class App
     public static void main( String[] args )
     {
         Fraction fr = new Fraction(2,3);
-        Fractionable num = (Fractionable) Util.cache(fr);
+        Fractionable num = Util.cache(fr);
         double d;
         d = num.doubleValue();
         System.out.printf("1: %1.2f%n", d);
