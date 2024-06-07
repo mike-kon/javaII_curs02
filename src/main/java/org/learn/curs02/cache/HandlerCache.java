@@ -17,7 +17,7 @@ public class HandlerCache<T> implements InvocationHandler {
 
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-    Method actualMethod = obj.getClass().getMethod(method.getName());
+    Method actualMethod = obj.getClass().getMethod(method.getName(), method.getParameterTypes());
     if (actualMethod.isAnnotationPresent(Mutator.class)) {
       return mutator(actualMethod, args);
     }

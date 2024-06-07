@@ -12,17 +12,20 @@ public class Fraction implements Fractionable{
     this.denum = denum;
   }
 
+  @Cache
   @Override
   public double doubleValue() {
     System.out.println("invoke double value");
     return (double) num/denum;
   }
 
+  @Mutator
   @Override
   public void setNum(int num) {
     this.num = num;
   }
 
+  @Mutator
   @Override
   public void setDenum(int denum) {
     this.denum = denum;
