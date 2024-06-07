@@ -16,14 +16,15 @@ public class HandlerCache<T> implements InvocationHandler {
   }
 
   @Override
-  public Object invoke(Object proxy, Method method, Object[] args) throws InvocationTargetException, IllegalAccessException {
-    if (method.isAnnotationPresent(Mutator.class)) {
-      return mutator(method, args);
+  public Object invoke(Object proxy, Method method, Object[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    Method actualMethod = obj.getClass().getMethod(method.getName());
+    if (actualMethod.isAnnotationPresent(Mutator.class)) {
+      return mutator(actualMethod, args);
     }
-    if (method.isAnnotationPresent(Cache.class)) {
-      return getCash(method, args);
+    if (actualMethod.isAnnotationPresent(Cache.class)) {
+      return getCash(actualMethod, args);
     }
-    return method.invoke(obj, args);
+    return actualMethod.invoke(obj, args);
   }
 
   private Object mutator(Method method, Object[] args) throws InvocationTargetException, IllegalAccessException {
